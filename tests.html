@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Finance Tracker Tests</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; background: #f0f4fb; color: #111; }
+    h1 { margin-bottom: 1rem; }
+    .result { padding: 1rem; margin-bottom: 1rem; border-radius: 0.75rem; background: #fff; border: 1px solid #d2d8e4; }
+    .pass { border-color: #2f8f4b; }
+    .fail { border-color: #c0392b; }
+    .fail h2 { color: #c0392b; }
+  </style>
+</head>
+<body>
+  <h1>Validator Tests</h1>
+  <div id="results"></div>
+  <script src="scripts/validators.js"></script>a
+  <script>
+    const cases = [
+      {name: 'Description valid', fn: validators.validateDescription, input: 'Cafeteria snack', expected: true},
+      {name: 'Description empty fail', fn: validators.validateDescription, input: '', expected: false},
+      {name: 'Description duplicate words fail', fn: validators.validateDescription, input: 'too much too much', expected: false},
+      {name: 'Amount valid', fn: validators.validateAmount, input: '35.50', expected: true},
+      {name: 'Amount invalid letters fail', fn: validators.validateAmount, input: '40usd', expected: false},
+      {name: 'Date valid', fn: validators.validateDate, input: '2026-06-10', expected: true},
+      {name: 'Date invalid format fail', fn: validators.validateDate, input: '10/06/2026', expected: false},
+      {name: 'Category valid', fn: validators.validateCategory, input: 'Books', expected: true},
+      {name: 'Category invalid fail', fn: validators.validateCategory, input: 'Foodie', expected: false}
+    ];
+
+    const results = document.getElementById('results');
+    cases.forEach(test => {
+      const passed = test.fn(test.input) === test.expected;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'result ' + (passed ? 'pass' : 'fail');
+      wrapper.innerHTML = `<h2>${test.name}</h2><p>Input: <code>${test.input}</code></p><p>Expected: ${test.expected}, Actual: ${test.fn(test.input)}</p>`;
+      results.appendChild(wrapper);
+    });
+  </script>
+</body>
+</html>
