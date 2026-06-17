@@ -6,7 +6,7 @@ const UI = {
       e.preventDefault();
       const data = new FormData(this.$('record-form'));
       const rec = Object.fromEntries(data);
-      const res = State.addOrUpdateRecord(rec);
+      const res = State.addRecord(rec);
       this.$('form-status').textContent = res.success ? 'Saved!' : res.errors.join(' ');
       if (res.success) {
         this.$('record-form').reset();
