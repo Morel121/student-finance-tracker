@@ -22,7 +22,7 @@
       {name: 'Description valid', fn: validators.validateDescription, input: 'Cafeteria snack', expected: true},
       {name: 'Description empty fail', fn: validators.validateDescription, input: '', expected: false},
       {name: 'Description duplicate words fail', fn: validators.validateDescription, input: 'too much too much', expected: false},
-      {name: 'Amount valid', fn: validators.validateAmount, input: '35.50', expected: true},
+      {name: 'Amount valid', fn: validators.validateAmount, input: '45.50', expected: true},
       {name: 'Amount invalid letters fail', fn: validators.validateAmount, input: '40usd', expected: false},
       {name: 'Date valid', fn: validators.validateDate, input: '2026-06-10', expected: true},
       {name: 'Date invalid format fail', fn: validators.validateDate, input: '10/06/2026', expected: false},
