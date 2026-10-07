@@ -3,10 +3,14 @@
   font-family: system-ui, 'Segoe UI', Arial, sans-serif;
   font-size: 16px;
   color: #111;
+  --primary-hover: #0a2d4e;
+  --primary-active: #072037;
+  --focus-ring: #2563eb;
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 *{box-sizing:border-box}
-
+*, *::before,*::after{box-sizing:border-box}
 body{margin:0;min-height:100vh;background:#f5f7fb}
 
 .site-header{padding:1rem;background:#fff;border-bottom:1px solid #e6e6e6}
@@ -26,6 +30,13 @@ th,td{padding:.5rem;border-bottom:1px solid #eee;text-align:left}
 button,input,select{font:inherit;padding:.5rem;border:1px solid #ddd;border-radius:6px}
 
 button{background:#0d3b66;color:#fff;border:none}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible{
+  outline:2px solid var(--focus-ring);
+  outline-offset:2px;
+  border-color: transparent;
+}
 
 .form-status{margin-top:.5rem;color:#0d3b66}
 
